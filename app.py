@@ -3,15 +3,12 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load model
 model = joblib.load("models/retail_forecast_model.pkl")
 
-# Load dataset
 df = pd.read_csv("data/train.csv")
 df["date"] = pd.to_datetime(df["date"])
 df["month"] = df["date"].dt.month
 
-# Sidebar
 st.sidebar.title("Dashboard Menu")
 st.sidebar.write("Retail Intelligence System")
 
@@ -23,7 +20,6 @@ st.sidebar.metric("Records", "913K")
 st.sidebar.metric("Model MAE", "6.28")
 st.sidebar.success("Model Status: Active")
 
-# Main page
 st.title("Retail Demand Forecasting System")
 st.subheader("AI-Powered Inventory Optimization Dashboard")
 st.caption("Machine Learning Powered Retail Forecasting & Inventory Optimization Platform")
@@ -87,7 +83,6 @@ current_stock = st.number_input(
     value=80
 )
 
-# Prediction Button
 if st.button("Predict Demand"):
 
     sample_data = pd.DataFrame({
@@ -119,7 +114,6 @@ if st.button("Predict Demand"):
     else:
         st.success("✅ Stock Level Safe")
 
-    # Sales Analytics
     st.header("Sales Analytics")
 
     monthly_sales = df.groupby("month")["sales"].sum()
@@ -137,8 +131,6 @@ if st.button("Predict Demand"):
     ax.set_ylabel("Total Sales")
 
     st.pyplot(fig)
-
-    # Top Selling Products
 
     st.subheader("Top 10 Best Selling Products")
 
@@ -161,8 +153,6 @@ if st.button("Predict Demand"):
     ax2.set_ylabel("Total Sales")
 
     st.pyplot(fig2)
-
-    # Business Insights
 
     st.header("Business Insights")
 
