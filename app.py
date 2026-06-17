@@ -3,12 +3,23 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+<<<<<<< HEAD
 model = joblib.load("models/retail_forecast_model.pkl")
 
+=======
+# Load model
+model = joblib.load("models/retail_forecast_model.pkl")
+
+# Load dataset
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
 df = pd.read_csv("data/train.csv")
 df["date"] = pd.to_datetime(df["date"])
 df["month"] = df["date"].dt.month
 
+<<<<<<< HEAD
+=======
+# Sidebar
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
 st.sidebar.title("Dashboard Menu")
 st.sidebar.write("Retail Intelligence System")
 
@@ -20,6 +31,10 @@ st.sidebar.metric("Records", "913K")
 st.sidebar.metric("Model MAE", "6.28")
 st.sidebar.success("Model Status: Active")
 
+<<<<<<< HEAD
+=======
+# Main page
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
 st.title("Retail Demand Forecasting System")
 st.subheader("AI-Powered Inventory Optimization Dashboard")
 st.caption("Machine Learning Powered Retail Forecasting & Inventory Optimization Platform")
@@ -83,6 +98,10 @@ current_stock = st.number_input(
     value=80
 )
 
+<<<<<<< HEAD
+=======
+# Prediction Button
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
 if st.button("Predict Demand"):
 
     sample_data = pd.DataFrame({
@@ -114,6 +133,10 @@ if st.button("Predict Demand"):
     else:
         st.success("✅ Stock Level Safe")
 
+<<<<<<< HEAD
+=======
+    # Sales Analytics
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
     st.header("Sales Analytics")
 
     monthly_sales = df.groupby("month")["sales"].sum()
@@ -132,6 +155,11 @@ if st.button("Predict Demand"):
 
     st.pyplot(fig)
 
+<<<<<<< HEAD
+=======
+    # Top Selling Products
+
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
     st.subheader("Top 10 Best Selling Products")
 
     top_items = (
@@ -154,6 +182,11 @@ if st.button("Predict Demand"):
 
     st.pyplot(fig2)
 
+<<<<<<< HEAD
+=======
+    # Business Insights
+
+>>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
     st.header("Business Insights")
 
     st.info("📈 Peak sales occur during July.")
