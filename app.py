@@ -1,75 +1,3 @@
-import matplotlib.pyplot as plt
-import streamlit as st
-import pandas as pd
-import joblib
-
-<<<<<<< HEAD
-model = joblib.load("models/retail_forecast_model.pkl")
-
-=======
-# Load model
-model = joblib.load("models/retail_forecast_model.pkl")
-
-# Load dataset
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
-df = pd.read_csv("data/train.csv")
-df["date"] = pd.to_datetime(df["date"])
-df["month"] = df["date"].dt.month
-
-<<<<<<< HEAD
-=======
-# Sidebar
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
-st.sidebar.title("Dashboard Menu")
-st.sidebar.write("Retail Intelligence System")
-
-st.sidebar.header("Project Statistics")
-
-st.sidebar.metric("Stores", 10)
-st.sidebar.metric("Products", 50)
-st.sidebar.metric("Records", "913K")
-st.sidebar.metric("Model MAE", "6.28")
-st.sidebar.success("Model Status: Active")
-
-<<<<<<< HEAD
-=======
-# Main page
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
-st.title("Retail Demand Forecasting System")
-st.subheader("AI-Powered Inventory Optimization Dashboard")
-st.caption("Machine Learning Powered Retail Forecasting & Inventory Optimization Platform")
-
-total_sales = int(df["sales"].sum())
-avg_sales = round(df["sales"].mean(), 2)
-
-top_item = (
-    df.groupby("item")["sales"]
-    .sum()
-    .idxmax()
-)
-
-best_month = (
-    df.groupby("month")["sales"]
-    .sum()
-    .idxmax()
-)
-
-kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-
-with kpi1:
-    st.metric("Total Sales", f"{total_sales:,}")
-
-with kpi2:
-    st.metric("Avg Sales", avg_sales)
-
-with kpi3:
-    st.metric("Top Item", top_item)
-
-with kpi4:
-    st.metric("Best Month", best_month)
-
-st.success("AI Forecasting Engine Running Successfully")
-
 # Inputs
 store = st.number_input(
     "Store ID",
@@ -98,10 +26,7 @@ current_stock = st.number_input(
     value=80
 )
 
-<<<<<<< HEAD
-=======
 # Prediction Button
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
 if st.button("Predict Demand"):
 
     sample_data = pd.DataFrame({
@@ -133,10 +58,7 @@ if st.button("Predict Demand"):
     else:
         st.success("✅ Stock Level Safe")
 
-<<<<<<< HEAD
-=======
     # Sales Analytics
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
     st.header("Sales Analytics")
 
     monthly_sales = df.groupby("month")["sales"].sum()
@@ -155,11 +77,7 @@ if st.button("Predict Demand"):
 
     st.pyplot(fig)
 
-<<<<<<< HEAD
-=======
     # Top Selling Products
-
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
     st.subheader("Top 10 Best Selling Products")
 
     top_items = (
@@ -182,11 +100,7 @@ if st.button("Predict Demand"):
 
     st.pyplot(fig2)
 
-<<<<<<< HEAD
-=======
     # Business Insights
-
->>>>>>> cf76ecf812facebe89c46f13f55039267ee1b5a7
     st.header("Business Insights")
 
     st.info("📈 Peak sales occur during July.")
